@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dark Portfolio</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100%;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: white;
+      overflow: hidden;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(6px);
+      padding: 15px;
+      z-index: 10;
+    }
+
+    header nav a {
+      margin: 0 20px;
+      text-decoration: none;
+      color: #ccc;
+      font-weight: bold;
+      transition: color 0.3s;
+      cursor: pointer;
+    }
+
+    header nav a.active, header nav a:hover {
+      color: #00ffff;
+    }
+
+    .page {
+      display: none;
+      height: 100vh;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      text-align: center;
+    }
+
+    .active-page {
+      display: flex;
+      animation: fadeIn 0.8s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav>
+      <a onclick="showPage('home')">Home</a>
+      <a onclick="showPage('about')">About</a>
+      <a onclick="showPage('projects')">Projects</a>
+      <a onclick="showPage('contact')">Contact</a>
+    </nav>
+  </header>
+
+  <div id="home" class="page active-page">
+    <div>
+      <h1>Welcome to My Portfolio</h1>
+      <p>Creative Developer | Designer | Innovator</p>
+    </div>
+  </div>
+
+  <div id="about" class="page">
+    <div>
+      <h1>About Me</h1>
+      <p>I am a passionate web developer with skills in modern frontend and backend technologies.</p>
+    </div>
+  </div>
+
+  <div id="projects" class="page">
+    <div>
+      <h1>Projects</h1>
+      <p>Showcase of my works with creative designs and real-world solutions.</p>
+    </div>
+  </div>
+
+  <div id="contact" class="page">
+    <div>
+      <h1>Contact Me</h1>
+      <p>Email: example@mail.com | Socials: @username</p>
+    </div>
+  </div>
+
+  <script>
+    function showPage(pageId) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active-page'));
+      document.getElementById(pageId).classList.add('active-page');
+
+      document.querySelectorAll('header nav a').forEach(a => a.classList.remove('active'));
+      event.target.classList.add('active');
+    }
+  </script>
+
+</body>
+</html>
